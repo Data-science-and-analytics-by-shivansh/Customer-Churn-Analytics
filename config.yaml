@@ -1,0 +1,24 @@
+# Churn Prediction Configuration
+
+# Data
+data_path: "churn_data.csv"
+
+# Train-Test Split
+test_size: 0.2
+random_state: 42
+
+# MLflow
+experiment_name: "Churn_Prediction_Production"
+tracking_uri: "http://localhost:5000"
+
+# Business Parameters
+avg_customer_annual_value: 1200  # Average revenue per customer per year
+intervention_success_rate: 0.50  # Assumed success rate of retention efforts
+churn_risk_threshold: 0.7  # Probability threshold for high-risk classification
+
+# Model Training
+use_smote: true
+smote_sampling_strategy: "auto"
+
+# Logging
+log_level: "INFO"
