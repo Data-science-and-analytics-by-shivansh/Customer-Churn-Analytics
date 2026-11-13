@@ -39,8 +39,8 @@ flowchart LR
     D --> F[FastAPI /predict<br/>Dockerized Scoring Service]
 ```
 
----
-
+### Repository Structure
+```text
 Customer-Churn-Analytics/
 ├── .github/workflows/ci.yml        # Automated Black, Flake8, Pytest (>=80% cov), Docker build
 ├── config/churn_config.yaml        # Pipeline hyperparameters & business ROI assumptions
@@ -56,13 +56,15 @@ Customer-Churn-Analytics/
 ├── docker-compose.yml              # Local service orchestration
 ├── main.py                         # CLI entrypoint (--mode train | serve)
 └── requirements.txt                # Pinned Python dependencies
+```
 
 ---
 
-Quickstart
-1. Local Setup & Training
-   
-git clone [https://github.com/Data-science-and-analytics-by-shivansh/Customer-Churn-Analytics.git](https://github.com/Data-science-and-analytics-by-shivansh/Customer-Churn-Analytics.git)
+## Quickstart
+
+### 1. Local Setup & Training
+```bash
+git clone https://github.com/Data-science-and-analytics-by-shivansh/Customer-Churn-Analytics.git
 cd Customer-Churn-Analytics
 
 python -m venv .venv
@@ -72,17 +74,19 @@ cp .env.example .env
 
 # Run training, evaluation, and retention ROI simulation
 python main.py --mode train
+```
 
-2. Real-Time Scoring API (Local or Docker)
-
+### 2. Real-Time Scoring API (Local or Docker)
+```bash
 # Option A: Run directly with Uvicorn
 python main.py --mode serve
 
 # Option B: Run via Docker Compose
 docker compose up --build -d
+```
 
 Test the live scoring endpoint:
-
+```bash
 curl -X POST http://localhost:8000/predict \
   -H "Content-Type: application/json" \
   -d '{
@@ -93,10 +97,16 @@ curl -X POST http://localhost:8000/predict \
     "support_tickets": 4,
     "payment_method": "Electronic check"
   }'
+```
 
-3. Run Quality & Coverage Checks
-
+### 3. Run Quality & Coverage Checks
+```bash
 black --check src tests main.py
 flake8 src tests main.py --max-line-length=100
 pytest --cov=churn_engine --cov-fail-under=80
+```
 
+---
+
+## License
+Distributed under the MIT License. See `LICENSE` for details.
