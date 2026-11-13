@@ -1,0 +1,10 @@
+experiment_name: "Churn_Prediction"
+data_path: "data/churn_data.csv"
+test_size: 0.2
+random_state: 42
+log_level: "INFO"
+
+# Business Impact Parameters
+intervention_threshold: 0.70
+intervention_success_rate: 0.50
+avg_customer_annual_value: 1200.0
